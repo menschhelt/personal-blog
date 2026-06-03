@@ -358,9 +358,7 @@ main {
 }
 .prose h2 {
   font-size: 1.62rem;
-  margin: 3.4rem 0 1.2rem;
-  padding-top: 1.6rem;
-  border-top: 1px solid var(--line);
+  margin: 2.6rem 0 1.2rem;
 }
 .prose h2::before {
   content: "§";
@@ -436,13 +434,9 @@ main {
 .prose hr {
   height: 0;
   border: 0;
-  border-top: 1px solid var(--line);
-  margin: 3rem auto;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
+  margin: 3.2rem auto;
   width: 100%;
-}
-/* a centered ornament for thematic breaks */
-.prose hr::after {
-  content: "";
 }
 
 .prose code {
