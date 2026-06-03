@@ -372,8 +372,7 @@ main {
   font-size: 1.2rem;
   margin: 2.6rem 0 1rem;
   color: var(--ink);
-  padding-left: 0.85rem;
-  border-left: 2px solid var(--accent);
+  font-weight: 660;
 }
 
 /* 카탈로그 코드(A1·F2·S3·T4·번호)만 액센트 모노로 — 계열이 한눈에 잡히게 */
@@ -420,10 +419,15 @@ main {
 
 .prose blockquote {
   margin: 2rem 0;
-  padding: 0.2rem 0 0.2rem 1.6rem;
-  border-left: 2px solid var(--accent);
+  padding: 1rem 1.4rem;
+  border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-radius: 0 5px 5px 0;
   color: var(--muted);
   font-style: italic;
+}
+.prose blockquote p {
+  margin: 0;
 }
 
 .prose ul,
