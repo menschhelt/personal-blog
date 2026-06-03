@@ -2,7 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { marked } from "marked";
 
-marked.setOptions({ gfm: true, breaks: false });
+// breaks:true — 이 글들은 "한 문장=한 줄, 문단 사이 빈 줄" 스타일이라
+// 한 줄바꿈을 <br>로 살려야 인용/나열 묶음이 줄 단위로 끊긴다.
+marked.setOptions({ gfm: true, breaks: true });
 
 export type PostMeta = {
   slug: string;
@@ -57,7 +59,14 @@ export function getPostHtml(slug: string): string | null {
   const meta = getPostMeta(slug);
   if (!meta) return null;
   const raw = fs.readFileSync(path.join(CONTENT_DIR, meta.file), "utf8");
-  return marked.parse(stripLeadingH1(raw)) as string;
+  let html = marked.parse(stripLeadingH1(raw)) as string;
+  // 제목 맨 앞의 카탈로그 코드(A1·F2·S3·T4 또는 1.·10.)만 색 입히기 위해 span으로 감싼다.
+  // 마크다운 원문은 건드리지 않고 렌더 HTML에서만 처리.
+  html = html.replace(
+    /<(h2|h3)>(([A-Z]\d+|\d+)\.)\s+/g,
+    '<$1><span class="hcode">$2</span> '
+  );
+  return html;
 }
 
 export function getAdjacent(slug: string): {

@@ -369,9 +369,22 @@ main {
   vertical-align: 0.04em;
 }
 .prose h3 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin: 2.6rem 0 1rem;
   color: var(--ink);
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--accent);
+}
+
+/* 카탈로그 코드(A1·F2·S3·T4·번호)만 액센트 모노로 — 계열이 한눈에 잡히게 */
+.prose .hcode {
+  font-family: var(--mono);
+  color: var(--accent-ink);
+  font-weight: 600;
+  font-size: 0.8em;
+  letter-spacing: 0;
+  margin-right: 0.2em;
+  vertical-align: 0.02em;
 }
 .prose h4 {
   font-size: 1.02rem;
